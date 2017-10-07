@@ -1,0 +1,184 @@
+body{
+        font-family: 'Comfortaa', cursive;
+}
+
+
+.full{
+	position: fixed;
+	z-index: -1000;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	}
+	
+.heading {
+	font-family: "Raleway", sans-serif;
+	font-size: 95px;
+    color: ghostwhite;
+	text-align:center;
+	margin-top:60px;
+	}
+.hidden{
+		display:none;
+	}
+.loginbox{
+	width: 260px;
+    padding: 20px;
+	border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    font-family:  'Raleway', sans-serif;
+}
+button.btn.btn-danger{
+	margin-top: 20px;
+    padding-left: 92px;
+    padding-right: 92px;
+    font-weight: bold;
+}
+form.enterform{
+	color: floralwhite;
+}
+div.form-group{
+	margin-bottom:3px;
+}
+.two{
+	font-size:50px;
+	color:black;
+}
+	
+
+	
+	
+		
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.fa.fa-music {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+#mood{
+    margin-top: 100px;
+}
+
+nav.navbar.navbar-inverse{
+    border-radius: 0;
+
+}	
+	
+a.navbar-brand{	
+    font-size: 25px;
+    padding-top: 13px;
+    font-weight: bold;	
+    font-family: "Raleway", sans-serif;
+}
+
+	
+.whitenav{
+    color:#333333 !important;
+    font-size: 17px;
+}
+	
+.red{
+    color: #d9534f;<i class="fa fa-backward playericon"></i>
+
+}	
+	
+.boximg{
+    width:200px;
+    height: 180px;
+    border-radius: 10px;
+}	
+	
+.mood-name{
+    color:floralwhite;
+}
+.box{
+    display: inline-block;
+    cursor:pointer;
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.player{
+    background-color:transparent;
+    text-align: center;
+    font-size:20px;
+    padding: 10px 0 10px 0;
+    position: fixed;
+    width: 46%;
+    bottom: 40px;
+}
+h3{
+    margin-top: 10px;
+}
+.playericon{
+color: floralwhite;
+cursor:pointer;
+}
+.progress{
+    display: flex;
+    background: transparent;
+}
+.progress-bar{
+    background: yellowgreen;
+    height: 4px;
+    border-radius: 10px;    
+    width: 100%;
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.currentTime,.duration{
+    font-size: 12px;
+}
+
+th{
+    text-align: center;
+}
+.table{
+    text-align: center;
+}
+tr:hover td{
+background-color:#f8f8f8;
+}
+	
+	
+@media(max-width:500px){
+	.heading{
+		font-size:60px;
+	}
+	div.space{
+		max-height:100px;
+	}
+}
