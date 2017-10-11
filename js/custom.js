@@ -17,10 +17,16 @@ alert('Enter valid Username and Password.');
 
 });
 
-$('.mood1').on('click',function(){
+function moodload(){
+for(i=0;i<6;i++){
+    var moodnumber=".mood"+(i+1);
+    $(moodnumber).on('click',function(){
     $('#mood').addClass('hidden');
     $('#player-list').removeClass('hidden');
 });
+}
+}
+moodload();
 
 
 
@@ -84,22 +90,9 @@ function songduration(){
     
 }
 
-window.onload=function(){
-for(i=0;i<songs.length;i++){
-    var obj=songs[i];
-    var name="#song"+(i+1);
-    var song=$(name)
-    song.find('.song-name').text(obj.name);
-    song.find('.song-artist').text(obj.artist);
-       song.find('.song-album').text(obj.album); 
-        song.find('.song-length').text(obj.duration);
-     addSongNameClickEvent(obj.fileName,i+1)
-}
-    songduration();
-    setInterval(function(){
-        songduration();
-    },1000);
-}
+
+
+
 var songs = [{
         'name': 'Badri Ki Dulhania (Title Track)',
         'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
@@ -129,6 +122,80 @@ var songs = [{
         'fileName': 'song4.mp3'
     }]
 
+var songs2 = [{
+        'name': 'Badri Ki Dulhania',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
+
+var mood1clicked=false;
+var mood2clicked=false;
+
+$('.mood1').click(function () {
+    mood1clicked = true;
+});
+$('.mood2').click(function () {
+    mood2clicked = true;
+});
+if(mood1clicked==true) {
+    for(i=0;i<songs.length;i++){
+    var obj=songs[i];
+    var name="#song"+(i+1);
+    var song=$(name)
+    song.find('.song-name').text(obj.name);
+    song.find('.song-artist').text(obj.artist);
+       song.find('.song-album').text(obj.album); 
+        song.find('.song-length').text(obj.duration);
+     addSongNameClickEvent(obj.fileName,i+1)
+
+}
+} 
+else if(mood2clicked==true){
+   window.onload=function(){
+
+    for(i=0;i<songs2.length;i++){
+    var obj=songs2[i];
+    var name="#song"+(i+1);
+    var song=$(name)
+    song.find('.song-name').text(obj.name);
+    song.find('.song-artist').text(obj.artist);
+       song.find('.song-album').text(obj.album); 
+        song.find('.song-length').text(obj.duration);
+     addSongNameClickEvent(obj.fileName,i+1)
+}
+}
+}
+
+window.onload=function(){
+
+    songduration();
+    setInterval(function(){
+        songduration();
+    },1000);
+}
 
 function addSongNameClickEvent(songName,position){
 var id="#song"+position;
@@ -145,3 +212,5 @@ $(id).click(function() {
   }
 });
 }
+
+
