@@ -85,46 +85,63 @@ function songduration(){
 }
 
 window.onload=function(){
-  $('#song1 .song-name').text(songList[0]);
-  $('#song2 .song-name').text(songList[1]);
-  $('#song3 .song-name').text(songList[2]);
-  $('#song4 .song-name').text(songList[3]);
+for(i=0;i<songs.length;i++){
+    var obj=songs[i];
+    var name="#song"+(i+1);
+    var song=$(name)
+    song.find('.song-name').text(obj.name);
+    song.find('.song-artist').text(obj.artist);
+       song.find('.song-album').text(obj.album); 
+        song.find('.song-length').text(obj.duration);
+     addSongNameClickEvent(obj.fileName,i+1)
+}
     songduration();
     setInterval(function(){
         songduration();
     },1000);
 }
+var songs = [{
+        'name': 'Badri Ki Dulhania (Title Track)',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
 
- var songList = ['Badri Ki Dulhania (Title Track)',
-'Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song']; 
 
- var fileNames = ['song1.mp3','song2.mp3',
-      'song3.mp3','song4.mp3'];
-
-
-$('#song1').click(function() {
+function addSongNameClickEvent(songName,position){
+var id="#song"+position;
+$(id).click(function() {
   var audio = document.querySelector('audio');
   var currentSong = audio.src;
-  if(currentSong.search(fileNames[0]) != -1)
+  if(currentSong.search(songName) != -1)
   {
     toggleSong();
   }
   else {
-    audio.src = fileNames[0];
+    audio.src = songName;
     toggleSong();
   }
 });
-
-
-$('#song1').click(function() {
-  var audio = document.querySelector('audio');
-  var currentSong = audio.src;
-  if(currentSong.search(fileNames[1]) != -1)
-  {
-    toggleSong();
-  }
-  else {
-    audio.src = fileNames[1];
-    toggleSong();
-  }
-});
+}

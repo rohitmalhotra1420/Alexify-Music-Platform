@@ -183,7 +183,7 @@
     <audio src="song1.mp3"id="audioElement"></audio>
     <div class="col-md-1"></div>
      <div class="col-md-10">
-    <div class="table-responsive"style="background: rgba(0,0,0,0.6);">          
+    <div class="table-responsive"style="background: rgba(0,0,0,0.6);font-size: 10px;">          
   <table class="table">
     <thead>
       <tr>
@@ -198,30 +198,30 @@
       <tr id="song1">
         <td>1</td>
         <td class="song-name"></td>
-        <td>Pitt</td>
-        <td>35</td>
-        <td>New York</td>
+        <td class="song-artist"></td>
+        <td class="song-album"></td>
+        <td class="song-length"></td>
       </tr>  
         <tr id="song2">
         <td>2</td>
         <td class="song-name"></td>
-        <td>Pitt</td>
-        <td>35</td>
-        <td>New York</td>
+        <td class="song-artist"></td>
+        <td class="song-album"></td>
+        <td class="song-length"></td>
       </tr>
         <tr id="song3">
         <td>3</td>
         <td class="song-name"></td>
-        <td>Pitt</td>
-        <td>35</td>
-        <td>New York</td>
+        <td class="song-artist"></td>
+        <td class="song-album"></td>
+        <td class="song-length"></td>
       </tr>
         <tr id="song4">
         <td>4</td>
         <td class="song-name"></td>
-        <td>Pitt</td>
-        <td>35</td>
-        <td>New York</td>
+        <td class="song-artist"></td>
+        <td class="song-album"></td>
+        <td class="song-length"></td>
       </tr>
     </tbody>
   </table>
@@ -243,7 +243,7 @@
     </div>    
     
     <div class="col-md-6">
-    
+    <div id="vis"></div>
     </div>    
     
 </div>
@@ -273,8 +273,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/custom.js"></script>
-    <script src="js/particles.js"></script>
-		<script src="js/main.js"></script>
+    	<script src="js/visualizer.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	
   </body>
 </html>
