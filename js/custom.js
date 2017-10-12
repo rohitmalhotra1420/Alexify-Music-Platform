@@ -26,6 +26,13 @@ $('#drum').on('click',function(){
     $('#player-list').addClass('hidden');
 });
 
+
+$('#piano').on('click',function(){
+   $('#pianokit').removeClass('hidden');
+    $('#player-list').addClass('hidden');
+});
+
+
 function moodload(){
 for(i=0;i<6;i++){
     var moodnumber=".mood"+(i+1);
