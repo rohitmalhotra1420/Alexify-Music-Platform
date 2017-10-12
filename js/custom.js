@@ -93,7 +93,7 @@ function songduration(){
 
 
 
-var songs = [{
+var romantic = [{
         'name': 'Badri Ki Dulhania (Title Track)',
         'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
         'album': 'Badrinath ki Dulhania',
@@ -122,8 +122,8 @@ var songs = [{
         'fileName': 'song4.mp3'
     }]
 
-var songs2 = [{
-        'name': 'Badri Ki Dulhania',
+var english = [{
+        'name': 'english',
         'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
         'album': 'Badrinath ki Dulhania',
         'duration': '2:56',
@@ -151,14 +151,131 @@ var songs2 = [{
         'fileName': 'song4.mp3'
     }]
 
+var rock = [{
+        'name': 'rock',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
+
+var oldgold = [{
+        'name': 'oldgold',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
+
+var mashup= [{
+        'name': 'mashup',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
+
+var party = [{
+        'name': 'party',
+        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+        'album': 'Badrinath ki Dulhania',
+        'duration': '2:56',
+       'fileName': 'song1.mp3'
+    },
+    {
+        'name': 'Humma Song',
+        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+        'album': 'Ok Jaanu',
+        'duration': '3:15',
+        'fileName': 'song2.mp3'
+    },
+    {
+        'name': 'Nashe Si Chadh Gayi',
+        'artist': 'Arijit Singh',
+        'album': 'Befikre',
+        'duration': '2:34',
+        'fileName': 'song3.mp3'
+    },
+    {
+        'name': 'The Breakup Song',
+        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'album': 'Ae Dil Hai Mushkil',
+        'duration': '2:29',
+        'fileName': 'song4.mp3'
+    }]
+
+
 var mood1clicked=false;
 var mood2clicked=false;
+var mood3clicked=false;
+var mood4clicked=false;
+var mood5clicked=false;
+var mood6clicked=false;
 
-$('.mood1').click(function () {
-    mood1clicked = true;
-    if(mood1clicked==true) {
-    for(i=0;i<songs.length;i++){
-    var obj=songs[i];
+function details(obj){
     var name="#song"+(i+1);
     var song=$(name);
     song.find('.song-name').text(obj.name);
@@ -166,26 +283,62 @@ $('.mood1').click(function () {
        song.find('.song-album').text(obj.album); 
         song.find('.song-length').text(obj.duration);
      addSongNameClickEvent(obj.fileName,i+1);
+    
+}
 
+$('.mood1').click(function () {
+    mood1clicked = true;
+    if(mood1clicked==true) {
+    for(i=0;i<romantic.length;i++){
+    var obj=romantic[i];
+details(obj);
 }
 } 
 });
 $('.mood2').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
-    for(i=0;i<songs2.length;i++){
-    var obj=songs2[i];
-    var name="#song"+(i+1);
-    var song=$(name);
-    song.find('.song-name').text(obj.name);
-    song.find('.song-artist').text(obj.artist);
-       song.find('.song-album').text(obj.album); 
-        song.find('.song-length').text(obj.duration);
-     addSongNameClickEvent(obj.fileName,i+1);
+    for(i=0;i<english.length;i++){
+    var obj=english[i];
+details(obj);
+}
+}
+});
+$('.mood3').click(function () {
+    mood2clicked = true;
+    if(mood2clicked==true){
+    for(i=0;i<rock.length;i++){
+    var obj=rock[i];
+details(obj);
+}
+}
+});$('.mood4').click(function () {
+    mood2clicked = true;
+    if(mood2clicked==true){
+    for(i=0;i<oldgold.length;i++){
+    var obj=oldgold[i];
+details(obj);
+}
+}
+});$('.mood5').click(function () {
+    mood2clicked = true;
+    if(mood2clicked==true){
+    for(i=0;i<mashup.length;i++){
+    var obj=mashup[i];
+details(obj);
 }
 }
 });
 
+$('.mood6').click(function () {
+    mood2clicked = true;
+    if(mood2clicked==true){
+    for(i=0;i<party.length;i++){
+    var obj=party[i];
+details(obj);
+}
+}
+});
 
 
 window.onload=function(){
