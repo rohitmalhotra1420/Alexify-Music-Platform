@@ -156,38 +156,37 @@ var mood2clicked=false;
 
 $('.mood1').click(function () {
     mood1clicked = true;
-});
-$('.mood2').click(function () {
-    mood2clicked = true;
-});
-if(mood1clicked==true) {
+    if(mood1clicked==true) {
     for(i=0;i<songs.length;i++){
     var obj=songs[i];
     var name="#song"+(i+1);
-    var song=$(name)
+    var song=$(name);
     song.find('.song-name').text(obj.name);
     song.find('.song-artist').text(obj.artist);
        song.find('.song-album').text(obj.album); 
         song.find('.song-length').text(obj.duration);
-     addSongNameClickEvent(obj.fileName,i+1)
+     addSongNameClickEvent(obj.fileName,i+1);
 
 }
 } 
-else if(mood2clicked==true){
-   window.onload=function(){
-
+});
+$('.mood2').click(function () {
+    mood2clicked = true;
+    if(mood2clicked==true){
     for(i=0;i<songs2.length;i++){
     var obj=songs2[i];
     var name="#song"+(i+1);
-    var song=$(name)
+    var song=$(name);
     song.find('.song-name').text(obj.name);
     song.find('.song-artist').text(obj.artist);
        song.find('.song-album').text(obj.album); 
         song.find('.song-length').text(obj.duration);
-     addSongNameClickEvent(obj.fileName,i+1)
+     addSongNameClickEvent(obj.fileName,i+1);
 }
 }
-}
+});
+
+
 
 window.onload=function(){
 
