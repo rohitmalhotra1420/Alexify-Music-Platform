@@ -91,7 +91,7 @@
         <li><a href="#"class="whitenav"id="drum">Drum Kit <i class="fa fa-dot-circle-o red" aria-hidden="true"></i></a></li>
         </ul>
         <form class="navbar-form navbar-left">
-  <div class="input-group">
+  <div class="input-group"id="search">
     <input type="text" class="form-control" placeholder="Search ">
     <div class="input-group-btn">
       <button class="btn btn-default" type="submit">
@@ -238,6 +238,7 @@
 <i class="fa fa-play playericon play-icon"style="margin:0 30px 0 30px;"></i> 
 <i class="fa fa-forward playericon"></i>
 
+
 </footer> 
     
     </div>    
@@ -253,7 +254,62 @@
     
     
     
+    <div class="container-fluid hidden"id="drumkit">
     
+    
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+    
+    
+    
+    </div>
     
     
     
@@ -273,9 +329,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/custom.js"></script>
-    	<script src="js/visualizer.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/drumkit.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	
   </body>
 </html>

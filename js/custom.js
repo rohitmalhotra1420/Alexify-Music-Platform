@@ -10,11 +10,20 @@ var user=name;
 $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
+$('#piano').addClass('hidden');
+$('#drum').addClass('hidden');
+$('#search').addClass('hidden');
 }
 else{
 alert('Enter valid Username and Password.');
 }
 
+});
+
+
+$('#drum').on('click',function(){
+   $('#drumkit').removeClass('hidden');
+    $('#player-list').addClass('hidden');
 });
 
 function moodload(){
@@ -23,6 +32,9 @@ for(i=0;i<6;i++){
     $(moodnumber).on('click',function(){
     $('#mood').addClass('hidden');
     $('#player-list').removeClass('hidden');
+    $('#piano').removeClass('hidden');
+    $('#drum').removeClass('hidden');
+    $('#search').removeClass('hidden');
 });
 }
 }
