@@ -12,7 +12,7 @@ $(document).ready(function () {
   //var frequencyData = new Uint8Array(analyser.frequencyBinCount);
   var frequencyData = new Uint8Array(200);
 
-  var svgHeight = '300';
+  var svgHeight = '270';
   var svgWidth = '600';
   var barPadding = '1';
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
            return d;
         })
         .attr('fill', function(d) {
-           return 'chartreuse';
+           return 'yellowgreen';
         });
   }
 
