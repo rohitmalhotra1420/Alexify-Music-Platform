@@ -174,7 +174,9 @@ tr:hover td{
 background-color:#f8f8f8;
 }
 	
-	
+.current-song-image{
+    height: 125px;
+}
 @media(max-width:500px){
 	.heading{
 		font-size:60px;
