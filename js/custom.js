@@ -10,8 +10,6 @@ var user=name;
 $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
-$('#piano').addClass('hidden');
-$('#drum').addClass('hidden');
 $('#search').addClass('hidden');
 }
 else{
@@ -21,16 +19,7 @@ alert('Enter valid Username and Password.');
 });
 
 
-$('#drum').on('click',function(){
-   $('#drumkit').removeClass('hidden');
-    $('#player-list').addClass('hidden');
-});
 
-
-$('#piano').on('click',function(){
-   $('#pianokit').removeClass('hidden');
-    $('#player-list').addClass('hidden');
-});
 
 
 function moodload(){
