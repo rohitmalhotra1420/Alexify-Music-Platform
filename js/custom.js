@@ -135,32 +135,36 @@ var romantic = [{
     }]
 
 var english = [{
-        'name': 'english',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
+        'name': 'Closer',
+        'artist': 'The Chainsmokers ft. Halsey',
+        'album': 'Collage',
+        'duration': '4:21',
+       'fileName': 'english1.mp3',
+        'image':'closer.png'
     },
     {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
+        'name': 'Despacito',
+        'artist': 'Luis Fonsi, Daddy Yankee ft. Justin Bieber',
+        'album': 'Singles',
+        'duration': '3:49',
+        'fileName': 'english2.mp3',
+        'image':'despacito.jpg'
     },
     {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
+        'name': 'Let Me Love You',
+        'artist': 'Dj Snake Ft. Justin Bieber',
+        'album': 'Encore',
+        'duration': '3:26',
+        'fileName': 'english3.mp3',
+        'image':'letme.png'
     },
     {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-        'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'name': 'Shape Of You',
+        'artist': 'Ed Sheeran',
+        'album': '÷',
+        'duration': '3:53',
+        'fileName': 'english4.mp3',
+        'image':'shape.jpg'
     }]
 
 var rock = [{
@@ -373,7 +377,12 @@ function searchFunction() {
 }
 
 window.onload=function(){
- changeCurrentSongDetails(romantic[0]);
+    changeCurrentSongDetails(romantic[0]);
+    changeCurrentSongDetails(english[0]);
+    changeCurrentSongDetails(romantic[0]);
+    changeCurrentSongDetails(romantic[0]);
+    changeCurrentSongDetails(romantic[0]);
+    changeCurrentSongDetails(romantic[0]);
     songduration();
     setInterval(function(){
         songduration();
