@@ -308,6 +308,7 @@ $('.mood1').click(function () {
     for(i=0;i<romantic.length;i++){
     var obj=romantic[i];
 details(obj);
+    changeCurrentSongDetails(romantic[0]);
 }
 } 
 });
@@ -317,6 +318,8 @@ $('.mood2').click(function () {
     for(i=0;i<english.length;i++){
     var obj=english[i];
 details(obj);
+    changeCurrentSongDetails(english[0]);
+    
 }
 }
 });
@@ -377,12 +380,6 @@ function searchFunction() {
 }
 
 window.onload=function(){
-    changeCurrentSongDetails(romantic[0]);
-    changeCurrentSongDetails(english[0]);
-    changeCurrentSongDetails(romantic[0]);
-    changeCurrentSongDetails(romantic[0]);
-    changeCurrentSongDetails(romantic[0]);
-    changeCurrentSongDetails(romantic[0]);
     songduration();
     setInterval(function(){
         songduration();
