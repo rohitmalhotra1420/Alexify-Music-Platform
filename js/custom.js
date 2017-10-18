@@ -255,32 +255,36 @@ var mashup= [{
     }]
 
 var party = [{
-        'name': 'party',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
+        'name': 'Chalti Hai Kya 9 se 12',
+        'artist': 'Dev Nagi, Neha Kakkar',
+        'album': 'Judwaa2',
+        'duration': '4:22',
+       'fileName': 'party1.mp3',
+       'image':'9se12.jpg'
     },
     {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
+        'name': 'Disco Disco',
+        'artist': 'Benny Dayal, Shirley Setia',
+        'album': 'A Gentelman',
+        'duration': '2:46',
+        'fileName': 'party2.mp3',
+        'image':'gentleman.jpg'
     },
     {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
+        'name': 'Ding Dang',
+        'artist': 'Amit Mishra, Antra Mishra',
+        'album': 'Munna Michael',
+        'duration': '3:23',
+        'fileName': 'party3.mp3',
+        'image':'dingdang.jpg'
     },
     {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-        'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'name': 'Oonchi Hai Building 2.0',
+        'artist': 'Anu Malik, Neha Kakkar',
+        'album': 'Judwaa2',
+        'duration': '3:25',
+        'fileName': 'party4.mp3',
+        'image':'Building.jpg'
     }]
 
 
@@ -355,6 +359,7 @@ $('.mood6').click(function () {
     for(i=0;i<party.length;i++){
     var obj=party[i];
 details(obj);
+          changeCurrentSongDetails(party[0]);
 }
 }
 });
