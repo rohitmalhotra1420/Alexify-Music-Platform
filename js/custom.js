@@ -167,62 +167,70 @@ var english = [{
         'image':'shape.jpg'
     }]
 
-var rock = [{
-        'name': 'rock',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
+var indopop = [{
+        'name': 'Closer-Kabira',
+        'artist': 'Vidya Vox',
+        'album': 'Vidya Vox Mashup',
+        'duration': '3:23',
+       'fileName': 'indopop1.mp3',
+       'image':'closerkabira.jpg'
     },
     {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
+        'name': 'Coldplay n Channa Mereya ',
+        'artist': 'Vidya Vox',
+        'album': 'Vidya Vox Mashup ',
+        'duration': '3:06',
+        'fileName': 'indopop2.mp3',
+        'image':'coldplaynchanna.jpg'
     },
     {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
+        'name': 'Let Me n Tum  Hi Ho',
+        'artist': 'Vidya Vox',
+        'album': 'Let me love you n Tum hi ho',
+        'duration': '3:10',
+        'fileName': 'indopop3.mp3',
+        'image':'letntum.jpg'
     },
     {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-        'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'name': 'Shape Of You(Mann Mera)',
+        'artist': 'Gajendra Verma, Ed Sheraan',
+        'album': 'Shape of you(Mann Mera)',
+        'duration': '3:54',
+        'fileName': 'indopop4.mp3',
+        'image':'shapenmann.jpg'
     }]
 
 var oldgold = [{
-        'name': 'oldgold',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
+        'name': 'Pehla Nasha',
+        'artist': 'Udit Narayan, Sadhna Sargam',
+        'album': 'Jo Jeeta Wohi Sikandar',
+        'duration': '4:50',
+       'fileName': 'old1.mp3',
+       'image':'pehlanasha.jpg'
     },
     {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
+        'name': 'Ek Sanam Chahiye',
+        'artist': 'Kumar Sanu',
+        'album': 'Ashiqui',
+        'duration': '6:12',
+        'fileName': 'old2.mp3',
+        'image':'sanam.jpg'
     },
     {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
+        'name': 'Likhe Jo Khat Tujhe',
+        'artist': 'Mohammad Rafi',
+        'album': 'Kanyadaan',
+        'duration': '4:32',
+        'fileName': 'old3.mp3',
+        'image':'khat.jpg'
     },
     {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-        'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'name': 'Kisi Disco Mein Jayen',
+        'artist': 'Udit Narayan, Alka Yagnik',
+        'album': 'Chote Miyan Bade Miyan',
+        'duration': '5:25',
+        'fileName': 'old4.mp3',
+        'image':'kisidisco.jpg'
     }]
 
 var mashup= [{
@@ -334,9 +342,10 @@ details(obj);
 $('.mood3').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
-    for(i=0;i<rock.length;i++){
-    var obj=rock[i];
+    for(i=0;i<indopop.length;i++){
+    var obj=indopop[i];
 details(obj);
+        changeCurrentSongDetails(indopop[0]);
 }
 }
 });$('.mood4').click(function () {
@@ -345,6 +354,7 @@ details(obj);
     for(i=0;i<oldgold.length;i++){
     var obj=oldgold[i];
 details(obj);
+         changeCurrentSongDetails(oldgold[0]);
 }
 }
 });$('.mood5').click(function () {
