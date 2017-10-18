@@ -60,7 +60,7 @@ $('.fa-play').on('click',function(){
 
 
 $('body').on('keypress',function(event){
-   if (event.keyCode==32){
+   if (event.keyCode==32 && target.tagName !='INPUT'){
       toggleSong();
    } 
 });
