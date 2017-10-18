@@ -188,11 +188,33 @@ background-color:#f8f8f8;
         left:25%;
         bottom: 5%;
     }
+    .album-art{
+        margin-top: 40px;
+    }
 }
 
 
 
 
+         /*DataTables overrides*/
+
+#songs_info {
+    display: none;
+}
+
+
+#songs_filter input {
+    width: 400px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
+        
+tr.tab-row.odd{
+    background-color: inherit;
+}
+tr.tab-row.even{
+    background-color: inherit;
+}
 
 
 

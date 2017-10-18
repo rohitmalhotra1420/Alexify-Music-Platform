@@ -102,32 +102,36 @@ function songduration(){
 
 
 var romantic = [{
-        'name': 'Badri Ki Dulhania (Title Track)',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
-    },
-    {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
-    },
-    {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
-    },
-    {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+        'name': 'Ae Dil Hai Mushkil',
+        'artist': 'Arijit Singh, Pritam',
         'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'duration': '4:29',
+       'fileName': 'romantic1.mp3',
+       'image':'aedil.jpg'
+    },
+    {
+        'name': 'Aaj Zid',
+        'artist': 'Arijit Singh',
+        'album': 'Aksar 2',
+        'duration': '4:12',
+        'fileName': 'romantic2.mp3',
+        'image':'aajzid.jpg'
+    },
+    {
+        'name': 'Janna Ve',
+        'artist': 'Arijit Singh',
+        'album': 'Aksar 2',
+        'duration': '5:33',
+        'fileName': 'romantic3.mp3',
+        'image':'jannave.jpg'
+    },
+    {
+        'name': 'Meer-E-Karawan',
+        'artist': 'Amit Mishra, Neeti Mohan',
+        'album': 'Luckhnow Central',
+        'duration': '6:03',
+        'fileName': 'romantic4.mp3',
+        'image':'meere.jpg'
     }]
 
 var english = [{
@@ -286,11 +290,11 @@ var mood6clicked=false;
 function details(obj){
     var name="#song"+(i+1);
     var song=$(name);
-    song.find('.song-name').text(obj.name);
+    song.find('.song-name').append(obj.name);
     song.find('.song-artist').text(obj.artist);
        song.find('.song-album').text(obj.album); 
         song.find('.song-length').text(obj.duration);
-     addSongNameClickEvent(obj.fileName,i+1);
+     addSongNameClickEvent(obj,i+1);
     
 }
 
@@ -349,16 +353,39 @@ details(obj);
 });
 
 
-window.onload=function(){
 
+function searchFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+window.onload=function(){
+ changeCurrentSongDetails(romantic[0]);
     songduration();
     setInterval(function(){
         songduration();
     },1000);
+    /*$('#myTable').DataTable({
+        paging:false
+    });*/
 }
 
-function addSongNameClickEvent(songName,position){
-var id="#song"+position;
+function addSongNameClickEvent(songObj,position){
+    var songName = songObj.fileName; 
+    var id="#song"+position;
 $(id).click(function() {
   var audio = document.querySelector('audio');
   var currentSong = audio.src;
@@ -369,8 +396,13 @@ $(id).click(function() {
   else {
     audio.src = songName;
     toggleSong();
+    changeCurrentSongDetails(songObj); 
   }
 });
 }
 
-
+function changeCurrentSongDetails(songObj) {
+    $('.current-song-image').attr('src','img/' + songObj.image)
+    $('.current-song').text(songObj.name)
+    $('.current-album').text(songObj.album)
+}
