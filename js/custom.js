@@ -226,32 +226,36 @@ var oldgold = [{
     }]
 
 var mashup= [{
-        'name': 'mashup',
-        'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-        'album': 'Badrinath ki Dulhania',
-        'duration': '2:56',
-       'fileName': 'song1.mp3'
+        'name': 'Valentine Mashup 2017',
+        'artist': 'Dj Shadow Dubai',
+        'album': 'Desilicious 75',
+        'duration': '5:06',
+       'fileName': 'mashup1.mp3',
+       'image':'valentine1.jpg'
     },
     {
-        'name': 'Humma Song',
-        'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-        'album': 'Ok Jaanu',
-        'duration': '3:15',
-        'fileName': 'song2.mp3'
+        'name': 'The Love Mashup',
+        'artist': 'Dj Kiran Kamath',
+        'album': 'love Mashup 2016',
+        'duration': '4:47',
+        'fileName': 'mashup2.mp3',
+        'image':'lovemashup.jpg'
     },
     {
-        'name': 'Nashe Si Chadh Gayi',
-        'artist': 'Arijit Singh',
-        'album': 'Befikre',
-        'duration': '2:34',
-        'fileName': 'song3.mp3'
+        'name': 'Bollywood Love Mashup',
+        'artist': 'Dj Alvee',
+        'album': 'Mashups',
+        'duration': '4:28',
+        'fileName': 'Mashup3.mp3',
+        'image':'bollywoodlove.jpg'
     },
     {
-        'name': 'The Breakup Song',
-        'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-        'album': 'Ae Dil Hai Mushkil',
-        'duration': '2:29',
-        'fileName': 'song4.mp3'
+        'name': 'Zee Valentine Mashup',
+        'artist': 'Dj Notorious',
+        'album': 'Valentine Mashups',
+        'duration': '3:47',
+        'fileName': 'Mashup4.mp3',
+        'image':'valentine2.jpg'
     }]
 
 var party = [{
@@ -349,6 +353,7 @@ details(obj);
     for(i=0;i<mashup.length;i++){
     var obj=mashup[i];
 details(obj);
+    changeCurrentSongDetails(mashup[0]);
 }
 }
 });
