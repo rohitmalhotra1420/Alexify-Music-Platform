@@ -257,10 +257,14 @@
 <i class="fa fa-backward playericon"></i>
 <i class="fa fa-play playericon play-icon"style="margin:0 30px 0 30px;"></i> 
 <i class="fa fa-forward playericon"></i>
-<i class="fa fa-plus playericon" aria-hidden="true"onclick="document.getElementById('audioElement').volume+=0.2"></i>
-<i class="fa fa-minus playericon" aria-hidden="true"onclick="document.getElementById('audioElement').volume-=0.2"></i>
-
 </footer> 
+
+    <div style="position: fixed;left: 8%;display: grid;bottom: 10%;">
+        <i class="fa fa-repeat playericon side-controls animated rotateIn" aria-hidden="true"></i>
+    <i class="fa fa-plus playericon side-controls animated rotateIn" aria-hidden="true"onclick="document.getElementById('audioElement').volume+=0.2"></i>
+<i class="fa fa-minus playericon side-controls animated rotateIn" aria-hidden="true"onclick="document.getElementById('audioElement').volume-=0.2"></i>
+<i class="fa fa-random playericon side-controls animated rotateIn" aria-hidden="true"></i>
+    </div>
     
     
 </div>

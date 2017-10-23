@@ -194,6 +194,12 @@ background-color:#f8f8f8;
 }
 
 
+.side-controls{
+        padding: 10px;
+    background: darkviolet;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
 
 
          /*DataTables overrides*/
