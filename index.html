@@ -264,6 +264,7 @@
     <i class="fa fa-plus playericon side-controls animated rotateIn" aria-hidden="true"onclick="document.getElementById('audioElement').volume+=0.2"></i>
 <i class="fa fa-minus playericon side-controls animated rotateIn" aria-hidden="true"onclick="document.getElementById('audioElement').volume-=0.2"></i>
 <i class="fa fa-random playericon side-controls animated rotateIn" aria-hidden="true"></i>
+        <i class="fa fa-microphone playericon side-controls animated rotateIn"id="listen" aria-hidden="true"></i>
     </div>
     
     
@@ -277,13 +278,55 @@
     
 <script>
 
+    $('#listen').on('click',function(){
+       speechRs.rec_start('en-IN',function(final_transcript ){
+           var convertedText=final_transcript;
+           if (convertedText.length >0){
+               speechRs.rec_stop();
+               console.log(convertedText);
+               $.ajax({
+  url: 'https://api.wit.ai/message',
+  data: {
+    'q': convertedText,
+    'access_token' : 'DYRWIE4YMHG67RDRKBXCQPXTBD24XL36'
+  },
+  dataType: 'jsonp',
+  method: 'GET',
+  success: function(response) {
+      console.log("success!", response);
+      if(response.entities.intent[0].value == 'play') {
+        // Change current song to first song
+        toggleSong() ;
+      }
+      else if (response.entities.intent[0].value == 'pause') {
+        toggleSong() ;
+      }
+  }
+});
+           }
+       }) 
+          
+    });
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/custom.js"></script>
     <script src="js/visualizer.js"></script>
+    <script src="js/rs.speech.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js">

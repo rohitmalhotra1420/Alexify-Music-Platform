@@ -11,6 +11,13 @@ $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
 $('#search').addClass('hidden');
+var welcomeGreeting="Hello,"+name+",Welcome to Alexify";
+     speechRs.speechinit('Google हिन्दी',function(e){
+	        speechRs.speak(welcomeGreeting, function() {
+                   //speaking completed.
+               }, false);	  
+     });
+   
 }
 else{
 alert('Enter valid Username and Password.');
@@ -60,7 +67,7 @@ $('.fa-play').on('click',function(){
 
 
 $('body').on('keypress',function(event){
-   if (event.keyCode==32 || target.tagName !='INPUT'){
+   if (event.keyCode==32 ){
       toggleSong();
    } 
 });
