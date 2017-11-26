@@ -1,5 +1,14 @@
 
+$( document ).ready(function() {
+    console.log( "ready!" );
+    speechRs.speechinit('Google हिन्दी',function(e){
+	        speechRs.speak("Hi,Welcome to Alexify, Please Log In", function() {
+                   //speaking completed.
+               }, false);	
+      });
 
+});
+      
 
 $('#change').on('click', function() {
 var name=$('#usr').val();
@@ -11,13 +20,20 @@ $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
 $('#search').addClass('hidden');
-var welcomeGreeting="Hello,"+name+",Welcome to Alexify";
+    
+var welcomeGreeting="Hello,"+name+",My name is Alexia. What Would You Like to listen?";
+var moodList=", Romantic Songs, English Songs, INDO-POP, Old IS Gold, Bollywood Mashups, Party Songs"
      speechRs.speechinit('Google हिन्दी',function(e){
 	        speechRs.speak(welcomeGreeting, function() {
                    //speaking completed.
                }, false);	  
      });
-   
+     speechRs.speechinit('Google हिन्दी',function(e){
+	        speechRs.speak(moodList, function() {
+                   //speaking completed.
+               }, false);	  
+     });
+  
 }
 else{
 alert('Enter valid Username and Password.');
@@ -328,6 +344,7 @@ function details(obj){
 $('.mood1').click(function () {
     mood1clicked = true;
     if(mood1clicked==true) {
+    $('#audioElement').attr('src',romantic[0].fileName);
     for(i=0;i<romantic.length;i++){
     var obj=romantic[i];
 details(obj);
@@ -338,6 +355,7 @@ details(obj);
 $('.mood2').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
+    $('#audioElement').attr('src',english[0].fileName);
     for(i=0;i<english.length;i++){
     var obj=english[i];
 details(obj);
@@ -349,6 +367,7 @@ details(obj);
 $('.mood3').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
+        $('#audioElement').attr('src',indopop[0].fileName);
     for(i=0;i<indopop.length;i++){
     var obj=indopop[i];
 details(obj);
@@ -358,6 +377,7 @@ details(obj);
 });$('.mood4').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
+        $('#audioElement').attr('src',oldgold[0].fileName);
     for(i=0;i<oldgold.length;i++){
     var obj=oldgold[i];
 details(obj);
@@ -367,6 +387,7 @@ details(obj);
 });$('.mood5').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
+        $('#audioElement').attr('src',mashup[0].fileName);
     for(i=0;i<mashup.length;i++){
     var obj=mashup[i];
 details(obj);
@@ -378,6 +399,7 @@ details(obj);
 $('.mood6').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
+        $('#audioElement').attr('src',party[0].fileName);
     for(i=0;i<party.length;i++){
     var obj=party[i];
 details(obj);
