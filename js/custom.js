@@ -33,6 +33,46 @@ var moodList=", Romantic Songs, English Songs, INDO-POP, Old IS Gold, Bollywood 
                    //speaking completed.
                }, false);	  
      });
+    
+    
+       speechRs.rec_start('en-IN',function(interim_transcript,final_transcript){
+           var convertedText=interim_transcript+final_transcript;
+           if (convertedText.length >0){
+               speechRs.rec_stop();
+               console.log(convertedText);
+               $.ajax({
+  url: 'https://api.wit.ai/message',
+  data: {
+    'q': convertedText,
+    'access_token' : 'DYRWIE4YMHG67RDRKBXCQPXTBD24XL36'
+  },
+  dataType: 'jsonp',
+  method: 'GET',
+  success: function(response) {
+      console.log("success!", response);
+      if((response.entities.search_query[0].value == 'romantic')||(response.entities.search_query[0].value == 'romantic song')) {
+        // Change current song to first song
+        romanticMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'english song') {
+        englishMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'indopop song') {
+        indopopMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'old song') {
+        oldgoldMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'mashup song') {
+        mashupMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'party song') {
+        partyMood() ;
+      }
+  }
+});
+           }
+       }) ;
   
 }
 else{
@@ -333,7 +373,7 @@ var mood6clicked=false;
 function details(obj){
     var name="#song"+(i+1);
     var song=$(name);
-    song.find('.song-name').append(obj.name);
+    song.find('.song-name').text(obj.name);
     song.find('.song-artist').text(obj.artist);
        song.find('.song-album').text(obj.album); 
         song.find('.song-length').text(obj.duration);
@@ -461,3 +501,75 @@ function changeCurrentSongDetails(songObj) {
     $('.current-song').text(songObj.name)
     $('.current-album').text(songObj.album)
 }
+
+
+
+
+
+
+
+
+function moodLoad2(){
+    $('#mood').addClass('hidden');
+    $('#player-list').removeClass('hidden');
+    $('#piano').removeClass('hidden');
+    $('#drum').removeClass('hidden');
+    $('#search').removeClass('hidden');
+}
+
+
+function romanticMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',romantic[0].fileName);
+    for(i=0;i<romantic.length;i++){
+    var obj=romantic[i];
+details(obj);
+    changeCurrentSongDetails(romantic[0]);
+}
+}   
+
+ function englishMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',english[0].fileName);
+    for(i=0;i<english.length;i++){
+    var obj=english[i];
+details(obj);
+    changeCurrentSongDetails(english[0]);
+}
+}  
+function indopopMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',indopop[0].fileName);
+    for(i=0;i<indopop.length;i++){
+    var obj=indopop[i];
+details(obj);
+    changeCurrentSongDetails(indopop[0]);
+}
+}  
+function oldgoldMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',oldgold[0].fileName);
+    for(i=0;i<oldgold.length;i++){
+    var obj=oldgold[i];
+details(obj);
+    changeCurrentSongDetails(oldgold[0]);
+}
+}  
+function mashupMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',mashup[0].fileName);
+    for(i=0;i<mashup.length;i++){
+    var obj=mashup[i];
+details(obj);
+    changeCurrentSongDetails(mashup[0]);
+}
+}  
+function partyMood(){
+    moodLoad2();
+  $('#audioElement').attr('src',party[0].fileName);
+    for(i=0;i<party.length;i++){
+    var obj=party[i];
+details(obj);
+    changeCurrentSongDetails(party[0]);
+}
+}  

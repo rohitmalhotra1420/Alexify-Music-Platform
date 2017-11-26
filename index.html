@@ -279,38 +279,39 @@
 <script>
 
     $('#listen').on('click',function(){
+        
        speechRs.rec_start('en-IN',function(final_transcript ){
+           
            var convertedText=final_transcript;
            if (convertedText.length >0){
                speechRs.rec_stop();
                console.log(convertedText);
+               
                $.ajax({
-  url: 'https://api.wit.ai/message',
-  data: {
-    'q': convertedText,
-    'access_token' : 'DYRWIE4YMHG67RDRKBXCQPXTBD24XL36'
-  },
-  dataType: 'jsonp',
-  method: 'GET',
-  success: function(response) {
-      console.log("success!", response);
-      if(response.entities.intent[0].value == 'play') {
-        // Change current song to first song
-        toggleSong() ;
-      }
-      else if (response.entities.intent[0].value == 'pause') {
-        toggleSong() ;
-      }
-  }
-});
+                url: 'https://api.wit.ai/message',
+                data: {
+                'q': convertedText,
+                'access_token' : 'DYRWIE4YMHG67RDRKBXCQPXTBD24XL36'
+                },
+                dataType: 'jsonp',
+                method: 'GET',
+                success: function(response) {
+                    console.log("success!", response);
+                    if(response.entities.intent[0].value == 'play') {
+                        // Change current song to first song
+                        toggleSong() ;
+                    }
+                    else if (response.entities.intent[0].value == 'pause') {
+                        toggleSong() ;
+                    }
+                }
+               });
            }
        }) 
           
     });
     
-     
-    
-    
+
     
     
     
