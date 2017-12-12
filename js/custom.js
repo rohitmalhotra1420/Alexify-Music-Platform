@@ -2,13 +2,71 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     speechRs.speechinit('Google हिन्दी',function(e){
-	        speechRs.speak("Hi,Welcome to Alexify, Please Log In", function() {
+	        speechRs.speak("Hi, I am Alexaa.", function() {
                    //speaking completed.
                }, false);	
+        recording();
       });
+    
 
 });
+
+function recording(){
+    speechRs.rec_start('en-IN',function(final_transcript){
+      var convertedText=final_transcript.toLowerCase();
+        console.log(final_transcript);
+        speechRs.rec_stop();
+        requestintro(convertedText);
+    });   
+}
       
+
+
+
+  function requestintro(convertedText){
+        $.ajax({
+                    url: 'https://api.wit.ai/message',
+                    data: {
+                    'q': convertedText,
+                    'access_token' : 'QW5T3QZR46XQKLKJKCXSDWG6MESMYSIO'
+                    },
+                    dataType: 'jsonp',
+                    method: 'GET',
+                    success: function(response) {
+                        console.log("success!", response);
+                        if(response.entities.intent[0].value == 'hello') {
+                            sayHi();
+                        }
+                        else if(response.entities.search_query[0].value == 'hi') {
+                            sayHi() ;
+                        }
+                    }
+            
+                });
+
+  }
+                        
+                    
+    
+
+
+
+function sayHi(){
+        
+    speechRs.speechinit('Google हिन्दी',function(e){
+                speechRs.speak("Hi, sir. Please login to continue.", function() {
+                    //speaking completed.
+                 }, false);	
+});
+                
+}
+
+
+
+
+
+
+
 
 $('#change').on('click', function() {
 var name=$('#usr').val();
@@ -21,7 +79,7 @@ $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
 $('#search').addClass('hidden');
     
-var welcomeGreeting="Hello,"+name+",My name is Alexia. What Would You Like to listen?";
+var welcomeGreeting="Welcome,"+name+". What should I play For You?";
 var moodList=", Romantic Songs, English Songs, INDO-POP, Old IS Gold, Bollywood Mashups, Party Songs"
      speechRs.speechinit('Google हिन्दी',function(e){
 	        speechRs.speak(welcomeGreeting, function() {
@@ -31,48 +89,12 @@ var moodList=", Romantic Songs, English Songs, INDO-POP, Old IS Gold, Bollywood 
      speechRs.speechinit('Google हिन्दी',function(e){
 	        speechRs.speak(moodList, function() {
                    //speaking completed.
-               }, false);	  
+               }, false);
+       
      });
     
-    
-       speechRs.rec_start('en-IN',function(interim_transcript,final_transcript){
-           var convertedText=interim_transcript+final_transcript;
-           if (convertedText.length >0){
-               speechRs.rec_stop();
-               console.log(convertedText);
-               $.ajax({
-  url: 'https://api.wit.ai/message',
-  data: {
-    'q': convertedText,
-    'access_token' : 'DYRWIE4YMHG67RDRKBXCQPXTBD24XL36'
-  },
-  dataType: 'jsonp',
-  method: 'GET',
-  success: function(response) {
-      console.log("success!", response);
-      if((response.entities.search_query[0].value == 'romantic')||(response.entities.search_query[0].value == 'romantic song')) {
-        // Change current song to first song
-        romanticMood() ;
-      }
-      else if(response.entities.search_query[0].value == 'english song') {
-        englishMood() ;
-      }
-      else if(response.entities.search_query[0].value == 'indopop song') {
-        indopopMood() ;
-      }
-      else if(response.entities.search_query[0].value == 'old song') {
-        oldgoldMood() ;
-      }
-      else if(response.entities.search_query[0].value == 'mashup song') {
-        mashupMood() ;
-      }
-      else if(response.entities.search_query[0].value == 'party song') {
-        partyMood() ;
-      }
-  }
-});
-           }
-       }) ;
+     moodRecord();
+      
   
 }
 else{
@@ -515,6 +537,7 @@ function moodLoad2(){
     $('#piano').removeClass('hidden');
     $('#drum').removeClass('hidden');
     $('#search').removeClass('hidden');
+    listenPlayPause();
 }
 
 
@@ -573,3 +596,113 @@ details(obj);
     changeCurrentSongDetails(party[0]);
 }
 }  
+
+
+function moodAjax(convertedText){
+                $.ajax({
+  url: 'https://api.wit.ai/message',
+  data: {
+    'q': convertedText,
+    'access_token' : 'QW5T3QZR46XQKLKJKCXSDWG6MESMYSIO'
+  },
+  dataType: 'jsonp',
+  method: 'GET',
+  success: function(response) {
+      console.log("success!", response);
+      if((response.entities.search_query[0].value == 'romantic')||(response.entities.search_query[0].value == 'romantic song')) {
+        // Change current song to first song
+        romanticMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'english song') {
+        englishMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'indopop song') {
+        indopopMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'old song') {
+        oldgoldMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'mashup song') {
+        mashupMood() ;
+      }
+      else if(response.entities.search_query[0].value == 'party song') {
+        partyMood() ;
+      }
+  }
+});
+}
+
+
+function moodRecord(){
+    speechRs.rec_start('en-IN',function(final_transcript){
+           var convertedText=final_transcript.toLowerCase();
+           if (convertedText.length >0){
+               speechRs.rec_stop();
+               console.log(convertedText);
+             moodAjax(convertedText);
+           }
+       }) ;
+}
+
+
+
+
+
+
+
+    function listenPlayPause(){
+        speechRs.rec_start('en-IN',function(final_transcript ){
+           
+           var convertedText=final_transcript.toLowerCase();
+           if (convertedText.length >0){
+                 speechRs.rec_stop();
+               console.log(convertedText);
+               
+               requestPlayPause(convertedText);
+               
+           }
+       }) ;
+    
+    }
+    
+    function requestPlayPause(convertedText){
+        $.ajax({
+                url: 'https://api.wit.ai/message',
+                data: {
+                'q': convertedText,
+                'access_token' : 'QW5T3QZR46XQKLKJKCXSDWG6MESMYSIO'
+                },
+                dataType: 'jsonp',
+                method: 'GET',
+                success: function(response) {
+                    console.log("success!", response);
+                    if(response.entities.intent[0].value == 'play') {
+                        // Change current song to first song
+                        toggleSong() ;
+                    }
+                    else if (response.entities.intent[0].value == 'pause') {
+                        toggleSong() ;
+                    }
+                    else if(response.entities.intent[0].value == 'increase'){
+                            increaseVolume();
+                     }
+                    else if(response.entities.intent[0].value == 'decrease'){
+                            decreaseVolume();
+                     }
+                }
+               });
+        listenPlayPause();
+    }
+    
+
+function increaseVolume(){
+    document.getElementById('audioElement').volume+=0.5;
+    $('[data-toggle="popoverIncrease"]').popover();   
+    console.log("increased by 0.5");
+}
+
+function decreaseVolume(){
+    document.getElementById('audioElement').volume-=0.5;
+    $('[data-toggle="popoverDecrease"]').popover();   
+    console.log("decreased by 0.5");
+}
