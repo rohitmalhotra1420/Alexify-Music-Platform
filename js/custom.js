@@ -1,3 +1,4 @@
+//welcome message function
 
 $( document ).ready(function() {
     console.log( "ready!" );
@@ -5,24 +6,27 @@ $( document ).ready(function() {
 	        speechRs.speak("Hi, I am Alexaa.", function() {
                    //speaking completed.
                }, false);	
+//recording function called
         recording();
       });
     
 
 });
 
+//now app will listen to user response
 function recording(){
     speechRs.rec_start('en-IN',function(final_transcript){
       var convertedText=final_transcript.toLowerCase();
         console.log(final_transcript);
         speechRs.rec_stop();
+        //function for ajax request
         requestintro(convertedText);
     });   
 }
       
 
 
-
+//ajax req sent to wit.ai and response received
   function requestintro(convertedText){
         $.ajax({
                     url: 'https://api.wit.ai/message',
@@ -35,9 +39,11 @@ function recording(){
                     success: function(response) {
                         console.log("success!", response);
                         if(response.entities.intent[0].value == 'hello') {
+                           //function called
                             sayHi();
                         }
                         else if(response.entities.search_query[0].value == 'hi') {
+                            //function called
                             sayHi() ;
                         }
                     }
@@ -50,7 +56,7 @@ function recording(){
     
 
 
-
+//tells user to proceed
 function sayHi(){
         
     speechRs.speechinit('Google हिन्दी',function(e){
@@ -67,6 +73,7 @@ function sayHi(){
 
 
 
+//click function trggers on clicking login button 
 
 $('#change').on('click', function() {
 var name=$('#usr').val();
@@ -78,6 +85,8 @@ $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
 $('#search').addClass('hidden');
+    
+//bot asks user for mood playlist
     
 var welcomeGreeting="Welcome,"+name+". What should I play For You?";
 var moodList=", Romantic Songs, English Songs, INDO-POP, Old IS Gold, Bollywood Mashups, Party Songs"
@@ -105,7 +114,7 @@ alert('Enter valid Username and Password.');
 
 
 
-
+//on clicking any mood it jumps to playlist
 
 function moodload(){
 for(i=0;i<6;i++){
@@ -119,10 +128,12 @@ for(i=0;i<6;i++){
 });
 }
 }
+//triggers automatically
 moodload();
 
 
 
+//play pause toggling function
 
 function toggleSong() {
     var song=document.querySelector('audio');
@@ -150,7 +161,7 @@ $('body').on('keypress',function(event){
    } 
 });
 
-
+//used for displaying accurate time
 function fancyTimeFormat(time)
 {   
     // Hours, minutes and seconds
@@ -170,10 +181,12 @@ function fancyTimeFormat(time)
     return ret;
 }
 
+
+//function to check song duration
 function songduration(){
     var song=document.querySelector('audio');
-    var currentTime = Math.floor(song.currentTime);
-    currentTime = fancyTimeFormat(currentTime);
+    var currentTime = Math.floor(song.currentTime);         //removes decimal value
+    currentTime = fancyTimeFormat(currentTime);             //passes current time format to fancy formare
 
     var duration = Math.floor(song.duration);
     duration = fancyTimeFormat(duration)
@@ -184,7 +197,7 @@ function songduration(){
 }
 
 
-
+//object details inside array for every mood load
 
 var romantic = [{
         'name': 'Ae Dil Hai Mushkil',
@@ -385,6 +398,9 @@ var party = [{
     }]
 
 
+//initially set every mood false
+
+
 var mood1clicked=false;
 var mood2clicked=false;
 var mood3clicked=false;
@@ -403,8 +419,11 @@ function details(obj){
     
 }
 
+
+//loads song details of mood1
+
 $('.mood1').click(function () {
-    mood1clicked = true;
+    mood1clicked = true; //mood1 clicked and gets true
     if(mood1clicked==true) {
     $('#audioElement').attr('src',romantic[0].fileName);
     for(i=0;i<romantic.length;i++){
@@ -414,6 +433,9 @@ details(obj);
 }
 } 
 });
+
+//loads song details of mood2
+
 $('.mood2').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
@@ -421,11 +443,14 @@ $('.mood2').click(function () {
     for(i=0;i<english.length;i++){
     var obj=english[i];
 details(obj);
-    changeCurrentSongDetails(english[0]);
-    
+    changeCurrentSongDetails(english[0]);   
 }
 }
 });
+
+//loads song details of mood3
+
+
 $('.mood3').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
@@ -436,7 +461,11 @@ details(obj);
         changeCurrentSongDetails(indopop[0]);
 }
 }
-});$('.mood4').click(function () {
+});
+
+//loads song details of mood4
+
+$('.mood4').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
         $('#audioElement').attr('src',oldgold[0].fileName);
@@ -446,7 +475,11 @@ details(obj);
          changeCurrentSongDetails(oldgold[0]);
 }
 }
-});$('.mood5').click(function () {
+});
+
+//loads song details of mood5
+
+$('.mood5').click(function () {
     mood2clicked = true;
     if(mood2clicked==true){
         $('#audioElement').attr('src',mashup[0].fileName);
@@ -457,6 +490,9 @@ details(obj);
 }
 }
 });
+
+
+//loads song details of mood6
 
 $('.mood6').click(function () {
     mood2clicked = true;
@@ -470,7 +506,7 @@ details(obj);
 }
 });
 
-
+//search function (same as datatbles)
 
 function searchFunction() {
   var input, filter, table, tr, td, i;
@@ -490,6 +526,8 @@ function searchFunction() {
   }
 }
 
+//sets song duration on wondows loading
+
 window.onload=function(){
     songduration();
     setInterval(function(){
@@ -500,13 +538,16 @@ window.onload=function(){
     });*/
 }
 
+
+//toggles song on clicking on other or current song
+
 function addSongNameClickEvent(songObj,position){
     var songName = songObj.fileName; 
     var id="#song"+position;
 $(id).click(function() {
   var audio = document.querySelector('audio');
   var currentSong = audio.src;
-  if(currentSong.search(songName) != -1)
+  if(currentSong.search(songName) != -1)       //searches filename of song in the src
   {
     toggleSong();
   }
@@ -540,6 +581,7 @@ function moodLoad2(){
     listenPlayPause();
 }
 
+// long song details according to mood
 
 function romanticMood(){
     moodLoad2();
@@ -550,7 +592,7 @@ details(obj);
     changeCurrentSongDetails(romantic[0]);
 }
 }   
-
+// long song details according to mood
  function englishMood(){
     moodLoad2();
   $('#audioElement').attr('src',english[0].fileName);
@@ -560,6 +602,7 @@ details(obj);
     changeCurrentSongDetails(english[0]);
 }
 }  
+// long song details according to mood
 function indopopMood(){
     moodLoad2();
   $('#audioElement').attr('src',indopop[0].fileName);
@@ -569,6 +612,7 @@ details(obj);
     changeCurrentSongDetails(indopop[0]);
 }
 }  
+// long song details according to mood
 function oldgoldMood(){
     moodLoad2();
   $('#audioElement').attr('src',oldgold[0].fileName);
@@ -577,7 +621,9 @@ function oldgoldMood(){
 details(obj);
     changeCurrentSongDetails(oldgold[0]);
 }
-}  
+} 
+
+// long song details according to mood
 function mashupMood(){
     moodLoad2();
   $('#audioElement').attr('src',mashup[0].fileName);
@@ -587,6 +633,8 @@ details(obj);
     changeCurrentSongDetails(mashup[0]);
 }
 }  
+
+// long song details according to mood
 function partyMood(){
     moodLoad2();
   $('#audioElement').attr('src',party[0].fileName);
@@ -596,6 +644,11 @@ details(obj);
     changeCurrentSongDetails(party[0]);
 }
 }  
+
+
+
+//ajax req for checking the users mood 
+
 
 
 function moodAjax(convertedText){
@@ -632,13 +685,15 @@ function moodAjax(convertedText){
 });
 }
 
+//records users voice for mood analysis
 
 function moodRecord(){
     speechRs.rec_start('en-IN',function(final_transcript){
            var convertedText=final_transcript.toLowerCase();
            if (convertedText.length >0){
-               speechRs.rec_stop();
+               speechRs.rec_stop();     //stop the recording
                console.log(convertedText);
+        //mood ajax function called 
              moodAjax(convertedText);
            }
        }) ;
@@ -649,6 +704,7 @@ function moodRecord(){
 
 
 
+//ajax req for play pause and vol up down
 
     function listenPlayPause(){
         speechRs.rec_start('en-IN',function(final_transcript ){
@@ -657,7 +713,7 @@ function moodRecord(){
            if (convertedText.length >0){
                  speechRs.rec_stop();
                console.log(convertedText);
-               
+               // calls request play pause for send user  voice text
                requestPlayPause(convertedText);
                
            }
@@ -665,6 +721,8 @@ function moodRecord(){
     
     }
     
+
+//sends data to wit.ai and checks response
     function requestPlayPause(convertedText){
         $.ajax({
                 url: 'https://api.wit.ai/message',
@@ -691,15 +749,24 @@ function moodRecord(){
                      }
                 }
                });
+        
+        //again triggers listening after performing the action
+        
+        
         listenPlayPause();
     }
     
+//function for increaing volume
 
 function increaseVolume(){
     document.getElementById('audioElement').volume+=0.5;
     $('[data-toggle="popoverIncrease"]').popover();   
     console.log("increased by 0.5");
 }
+
+
+//function for decreaing volume
+
 
 function decreaseVolume(){
     document.getElementById('audioElement').volume-=0.5;
