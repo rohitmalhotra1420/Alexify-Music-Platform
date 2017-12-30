@@ -72,7 +72,7 @@ function sayHi(){
 
 
 
-
+var two=false;
 //click function trggers on clicking login button 
 
 $('#change').on('click', function() {
@@ -84,6 +84,11 @@ var user=name;
 $('.username').text(user);
 $('#first').addClass('hidden');
 $('#two').removeClass('hidden');
+var two=true;
+    if(two==true){
+        allMoods();
+        console.log("allMoods() Called")
+    }
 $('#search').addClass('hidden');
     
 //bot asks user for mood playlist
@@ -420,8 +425,43 @@ function details(obj){
 }
 
 
-//loads song details of mood1
+//new code for mood details
 
+function allMoods(){
+    $('.boximg').click(function(event) {
+    var clickedmood = $(event.target);
+        if(clickedmood.hasClass("rclass")==true){
+            moodDetails(romantic);
+        }  
+        if(clickedmood.hasClass("eclass")==true){
+             moodDetails(english);   
+        }
+        if(clickedmood.hasClass("iclass")==true){
+             moodDetails(indopop);
+        }
+        if(clickedmood.hasClass("oclass")==true){
+              moodDetails(oldgold); 
+        }
+        
+        if(clickedmood.hasClass("mclass")==true){
+              moodDetails(mashup);   
+        }
+        if(clickedmood.hasClass("pclass")==true){
+             moodDetails(party);   
+        }
+    });   
+}
+function moodDetails(moodName){
+     $('#audioElement').attr('src',moodName[0].fileName);
+            for(i=0;i<moodName.length;i++){
+            var obj=moodName[i];
+                details(obj);
+            changeCurrentSongDetails(moodName[0]);
+            } 
+    
+}
+//loads song details of mood1
+/*
 $('.mood1').click(function () {
     mood1clicked = true; //mood1 clicked and gets true
     if(mood1clicked==true) {
@@ -505,6 +545,7 @@ details(obj);
 }
 }
 });
+*/
 
 //search function (same as datatbles)
 
