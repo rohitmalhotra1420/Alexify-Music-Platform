@@ -424,14 +424,12 @@ function details(obj){
     
 }
 
-
-//new code for mood details
-
+/*
 function allMoods(){
     $('.boximg').click(function(event) {
     var clickedmood = $(event.target);
         if(clickedmood.hasClass("rclass")==true){
-            moodDetails(romantic);
+            moodDetails(romantic);               // passes object type
         }  
         if(clickedmood.hasClass("eclass")==true){
              moodDetails(english);   
@@ -451,7 +449,22 @@ function allMoods(){
         }
     });   
 }
+*/
+
+//new code for mood details
+
+function allMoods(){
+    $('.boximg').click(function(event) {
+    var clickedmood = $(event.target).attr('name'); //string type
+        moodDetails(clickedmood);
+    });   
+   
+}
+
+
+
 function moodDetails(moodName){
+    console.log(typeof(moodName));
      $('#audioElement').attr('src',moodName[0].fileName);
             for(i=0;i<moodName.length;i++){
             var obj=moodName[i];
